@@ -62,13 +62,23 @@
 
             </div>
 
-            <div class="text-center mt-5">
-                <button onclick="showAllDataTogether()" class="btn-seeMore">See More</button>
-            </div>
+            
 
         </section>
         <!-- Card Section End -->
-        <!-- Card Section End -->
+        <!-- Loader start -->
+        <section id="loader" class="d-none">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+        </section>
+
+        <div id="show-all" class="text-center mt-5">
+            <button onclick="showAllDataTogether()" class="btn-seeMore">See More</button>
+        </div>
+        <!-- Loader end -->
         <!-- Button trigger modal -->
         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dataModal">
     Launch demo modal

@@ -7,9 +7,12 @@ const loadAllData = async ()=>{
 }
 const showAllData =(data)=>{
     // data = data.slice(0, 6)
-    // console.log(data)
+    console.log(data.length)
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML ="";
+
+    
+  
     data.forEach(singleData => {
         // console.log(singleData.features)
         const {id, image, features, name, published_in}= singleData
@@ -48,6 +51,7 @@ const showAllData =(data)=>{
     </div>
         
         `;
+        toggleSpinner(false);
         
         
     });
@@ -72,8 +76,9 @@ const showAllDataTogether = () => {
 
 }
 const showSingleData=(data)=>{
-    console.log(data)
-    const {description, pricing, features }=data
+    // console.log(data)
+    const {description, pricing, features, image_link, input_output_examples, integrations}=data
+    console.log(integrations);
     const modalBody=document.getElementById('modal-body')
     modalBody.innerHTML="";
     modalBody.innerHTML += `
@@ -101,12 +106,13 @@ const showSingleData=(data)=>{
 
                 </ul>
             </div>
-            <div class="integrations">
-                <h5>Integrations</h5>
-                <ul>
-                    <li>Customizable responses</li>
-                    <li>Multilingual support</li>
-                    <li>Seamless integration</li>
+            <div onload="showIntegration(${integrations})" class="integrations">
+                <h5 >Integrations</h5>
+                <ul  id="integrations">
+                    
+                    <li>${integrations?integrations[0]: "No Data Found"}</li>
+                    <li>${integrations?integrations[1]: "No Data Found"}</li>
+                    <li>${integrations?integrations[2]: "No Data Found"}</li>
 
                 </ul>
             </div>
@@ -116,11 +122,11 @@ const showSingleData=(data)=>{
     </div>
     <div class="col">
       <div class="card">
-        <img src="images/card2.png" class="card-img-top" alt="...">
+        <img src="${image_link[0]}" class="card-img-top" alt="...">
         <p class="accuracy">94% accuracy</p>
         <div class="card-body">
-          <h5 class="card-title text-center">Hi, how are you doing today?</h5>
-          <p class="card-text text-center">I'm doing well, thank you for asking. How can I assist you today?</p>
+          <h5 class="card-title text-center">${input_output_examples?input_output_examples[0].input: "Can you give any example?"}</h5>
+          <p class="card-text text-center">${input_output_examples?input_output_examples[0].output:"No! Not Yet! Take a break!!!"}</p>
         </div>
       </div>
     </div>
@@ -136,14 +142,30 @@ const shortByDate =async()=>{
     // console.log(data.data.tools)
     const shortData = data.data.tools;
     shortData.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
+        
         return new Date(b.published_in) - new Date(a.published_in);
       });
     //   console.log(shortData)
       showAllData(shortData)
+      
 }
 
+const showIntegration = (id) => {
+        console.log(id);
+}
+
+const toggleSpinner = isLoading =>{
+    const loader = document.getElementById('loader');
+
+    if(isLoading){
+        loader.classList.remove('d-none')
+    }
+    else{
+        loader.classList.add('d-none') 
+    }
+}
+
+toggleSpinner(true);
 
 
 
