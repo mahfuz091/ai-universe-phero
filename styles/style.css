@@ -132,11 +132,11 @@
     border-bottom: none !important;
 }
 
-.modal-card{
+.modal-card {
 
     text-align: center;
     margin-top: 25px;
-    
+
     background: #FFFFFF;
     border-radius: 16px;
     width: 131px;
@@ -187,11 +187,28 @@
     line-height: 19px;
     position: absolute;
     top: 40px;
-    right : 40px;
+    right: 40px;
     padding: 5px 5px;
     border-radius: 5px;
 
 
     color: #FFFFFF;
     background-color: red;
+}
+
+@media (max-width:576px) {
+    .modal-dialog {
+        --bs-modal-width: 500px !important;
+        margin-top: 215px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .btn-close {
+        width: 30px;
+        height: 30px;
+        right: -10px;
+        top: -10px !important;
+    }
+
 }
