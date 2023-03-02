@@ -76,9 +76,9 @@ const showAllDataTogether = () => {
 
 }
 const showSingleData=(data)=>{
-    // console.log(data)
-    const {description, pricing, features, image_link, input_output_examples, integrations}=data
-    console.log(integrations);
+    console.log(data)
+    const {description, pricing, features, image_link, input_output_examples, integrations, accuracy}=data
+    
     const modalBody=document.getElementById('modal-body')
     modalBody.innerHTML="";
     modalBody.innerHTML += `
@@ -99,14 +99,15 @@ const showSingleData=(data)=>{
           <div class="d-flex mt-3">
             <div class="features">
                 <h5>Features</h5>
-                <ul>
+                <ul >
                     <li>${features[1].feature_name}</li>
                     <li>${features[2].feature_name}</li>
                     <li>${features[3].feature_name}</li>
+                    
 
                 </ul>
             </div>
-            <div onload="showIntegration(${integrations})" class="integrations">
+            <div  class="integrations">
                 <h5 >Integrations</h5>
                 <ul  id="integrations">
                     
@@ -121,7 +122,7 @@ const showSingleData=(data)=>{
     <div class="col">
       <div class="card">
         <img src="${image_link[0]}" class="card-img-top" alt="...">
-        <p class="accuracy">94% accuracy</p>
+        <p id="accuracy" class="accuracy d-none"></p>
         <div class="card-body">
           <h5 class="card-title text-center">${input_output_examples?input_output_examples[0].input: "Can you give any example?"}</h5>
           <p class="card-text text-center">${input_output_examples?input_output_examples[0].output:"No! Not Yet! Take a break!!!"}</p>
@@ -132,10 +133,18 @@ const showSingleData=(data)=>{
     
 </div>
     `
+    const accuracyC= document.getElementById("accuracy")
+    if(accuracy.score){
+        accuracyC.classList.remove('d-none')
+        accuracyC.innerText =`${accuracy.score*100} % accuracy`
+    }
+    else{
+        accuracyC.classList.add('d-none')
+    }
     const integrationsContainer = document.getElementById("integrations")
     if (integrations){
         integrations.forEach(el=>{
-            console.log(el)
+            
            
             integrationsContainer.innerHTML += `
             <li>${el}</li>
@@ -147,6 +156,8 @@ const showSingleData=(data)=>{
         <p>No Data Found</p>
         `
     }
+   
+
     
 }
 const shortByDate =async()=>{
@@ -162,10 +173,6 @@ const shortByDate =async()=>{
     //   console.log(shortData)
       showAllData(shortData)
       
-}
-
-const showIntegration = (data) => {
-        console.log(data);
 }
 
 

@@ -132,15 +132,18 @@
     border-bottom: none !important;
 }
 
-.modal-card {
+.modal-card{
 
     text-align: center;
     margin-top: 25px;
-    padding-top: 10px;
+    
     background: #FFFFFF;
     border-radius: 16px;
     width: 131px;
     height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-feature {
