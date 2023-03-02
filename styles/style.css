@@ -35,6 +35,9 @@
 
 .card-img-top {
     padding: 25px;
+    border-radius: 35px !important;
+
+    height: 300px !important;
 }
 
 .card-body {
@@ -52,9 +55,6 @@
     font-size: 25px;
     color: #111111;
 
-
-
-
 }
 
 .list-container {
@@ -69,12 +69,20 @@
 
 
 .footer {
-    padding-left: 25px;
-    padding-right: 25px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top: 1px solid rgba(17, 17, 17, 0.2);
+    margin: 0 25px;
+    padding: 25px 0;
+
 }
+
+.footer p {
+    margin-top: 15px !important;
+}
+
 
 .arrow {
     width: 50px;
@@ -84,4 +92,103 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.btn-seeMore {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    background: #EB5757;
+    border-radius: 16px;
+    padding: 25px 45px;
+
+
+    color: #FFFFFF;
+}
+
+.btn-close {
+    position: absolute !important;
+    right: -26px;
+    top: -26px !important;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: red;
+    opacity: 1;
+
+}
+
+.modal-dialog {
+    --bs-modal-width: 1000px !important;
+    height: 763px !important;
+
+    margin: auto;
+}
+
+.modal-header {
+    border-bottom: none !important;
+}
+
+.modal-card {
+
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 10px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    width: 131px;
+    height: 100px;
+}
+
+.modal-feature {
+    background-color: rgba(235, 87, 87, 0.05);
+    border: 1px solid #EB5757;
+    border-radius: 16px;
+}
+
+.title {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    color: #111111;
+    padding: 30px;
+}
+
+.features>h5,
+.integrations>h5 {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    color: #111111;
+}
+
+.features>ul>li,
+.integrations>ul>li {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #585858
+}
+
+.accuracy {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    position: absolute;
+    top: 40px;
+    right : 40px;
+    padding: 5px 5px;
+    border-radius: 5px;
+
+
+    color: #FFFFFF;
+    background-color: red;
 }
