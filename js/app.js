@@ -14,8 +14,8 @@ const showAllData =(data)=>{
     
   
     data.forEach(singleData => {
-        // console.log(singleData.features)
         const {id, image, features, name, published_in}= singleData
+        // console.log(features)
         cardContainer.innerHTML += `
         <div class="col">
         <div class="card">
@@ -110,9 +110,7 @@ const showSingleData=(data)=>{
                 <h5 >Integrations</h5>
                 <ul  id="integrations">
                     
-                    <li>${integrations?integrations[0]: "No Data Found"}</li>
-                    <li>${integrations?integrations[1]: "No Data Found"}</li>
-                    <li>${integrations?integrations[2]: "No Data Found"}</li>
+                    
 
                 </ul>
             </div>
@@ -134,6 +132,22 @@ const showSingleData=(data)=>{
     
 </div>
     `
+    const integrationsContainer = document.getElementById("integrations")
+    if (integrations){
+        integrations.forEach(el=>{
+            console.log(el)
+           
+            integrationsContainer.innerHTML += `
+            <li>${el}</li>
+            `
+        })
+    }
+    else{
+        integrationsContainer.innerHTML += `
+        <p>No Data Found</p>
+        `
+    }
+    
 }
 const shortByDate =async()=>{
     const url = "https://openapi.programming-hero.com/api/ai/tools"
@@ -150,9 +164,10 @@ const shortByDate =async()=>{
       
 }
 
-const showIntegration = (id) => {
-        console.log(id);
+const showIntegration = (data) => {
+        console.log(data);
 }
+
 
 const toggleSpinner = isLoading =>{
     const loader = document.getElementById('loader');
