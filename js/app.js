@@ -129,6 +129,20 @@ const showSingleData=(data)=>{
 </div>
     `
 }
+const shortByDate =async()=>{
+    const url = "https://openapi.programming-hero.com/api/ai/tools"
+    const res = await fetch(url);
+    const data = await res.json();
+    // console.log(data.data.tools)
+    const shortData = data.data.tools;
+    shortData.sort(function(a,b){
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.published_in) - new Date(a.published_in);
+      });
+    //   console.log(shortData)
+      showAllData(shortData)
+}
 
 
 
