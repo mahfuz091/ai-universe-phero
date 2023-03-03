@@ -7,7 +7,7 @@ const loadAllData = async ()=>{
 }
 const showAllData =(data)=>{
     // data = data.slice(0, 6)
-    console.log(data.length)
+    // console.log(data.length)
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML ="";
 
@@ -22,10 +22,9 @@ const showAllData =(data)=>{
             <img src="${image}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Features</h5>
-                <ol id="list-container" class="list-container">
-                <li>${features[0]}</li>
-                <li>${features[1]}</li>
-                <li>${features[2]? features[2] : "No Data Available"}</li> 
+                <ol id="${id}" class="list-container">
+                
+                
 
 
                 </ol>
@@ -51,10 +50,26 @@ const showAllData =(data)=>{
     </div>
         
         `;
+        console.log(features)
+        const liContainer = document.getElementById(id)
+        features.forEach(item=>{
+            liContainer.innerHTML+=`
+            <li>${item}</li>
+            `
+
+            
+        })
+                    
         toggleSpinner(false);
+
+        // console.log(features)
+        // features.forEach(item=>{
+        //     console.log(item)
+        // })
         
         
     });
+    
     
 
 };
@@ -132,7 +147,8 @@ const showSingleData=(data)=>{
     
     
 </div>
-    `
+    `;
+    console.log(integrations);
     const accuracyC= document.getElementById("accuracy")
     if(accuracy.score){
         accuracyC.classList.remove('d-none')

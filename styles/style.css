@@ -32,6 +32,9 @@
     margin-top: 50px;
 
 }
+.card{
+    height: 600px !important;
+}
 
 .card-img-top {
     padding: 25px;
