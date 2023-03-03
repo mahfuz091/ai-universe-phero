@@ -1,15 +1,26 @@
-const loadAllData = async ()=>{
+const loadAllData = async (dataLimit)=>{
     const url = "https://openapi.programming-hero.com/api/ai/tools"
     const res = await fetch(url);
     const data = await res.json();
-    showAllData(data.data.tools.slice(0, 6))
+    showAllData(data.data.tools, dataLimit)
 
 }
-const showAllData =(data)=>{
+const showAllData =(data, dataLimit)=>{
     // data = data.slice(0, 6)
-    // console.log(data.length)
+    console.log(data.length)
+    const seeMore = document.getElementById("see-more")
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML ="";
+
+    if (dataLimit && data.length>6){
+        data = data.slice(0, 6)
+        seeMore.classList.remove("d-none")
+
+    }
+    else{
+        seeMore.classList.add("d-none")
+        
+    }
 
     
   
@@ -36,18 +47,19 @@ const showAllData =(data)=>{
                 <div>
                     <h5 class="card-title">${name}</h5>
                     <div class="d-flex align-items-center gap-2">
-                        <button><i class="fa fa-calendar-days"></i></button>
+                        <i class="fa fa-calendar-days"></i>
                         <p>${published_in}</p>
                     </div>
 
                 </div>
-                <div class="arrow">
-                    <i onclick="loadSingleData('${id}')" data-bs-toggle="modal" data-bs-target="#dataModal" class="fa fa-arrow-right"></i>
+                <div>
+                    <button class="border-0 arrow"><i onclick="loadSingleData('${id}')" data-bs-toggle="modal" data-bs-target="#dataModal" class="fa fa-arrow-right"></i></button>
                 </div>
 
             </div>
         </div>
     </div>
+    
         
         `;
         console.log(features)
@@ -210,5 +222,5 @@ toggleSpinner(true);
 
 
 
-loadAllData()
+loadAllData(6)
 

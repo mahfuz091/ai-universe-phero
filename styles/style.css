@@ -32,7 +32,8 @@
     margin-top: 50px;
 
 }
-.card{
+
+.card {
     height: 600px !important;
 }
 
@@ -87,6 +88,8 @@
 }
 
 
+
+
 .arrow {
     width: 50px;
     height: 50px;
@@ -96,6 +99,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: #EB5757;
 }
 
 .btn-seeMore {
