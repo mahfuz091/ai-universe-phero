@@ -58,7 +58,7 @@ const showAllData =(data, dataLimit)=>{
     
         
         `;
-        console.log(features)
+        
         const liContainer = document.getElementById(id)
         features.forEach(item=>{
             liContainer.innerHTML+=`
@@ -93,8 +93,9 @@ const showAllDataTogether = () => {
 
 }
 const showSingleData=(data)=>{
-    console.log(data)
+   
     const {description, pricing, features, image_link, input_output_examples, integrations, accuracy}=data
+    console.log(features)
     
     const modalBody=document.getElementById('modal-body')
     modalBody.innerHTML="";
@@ -116,17 +117,15 @@ const showSingleData=(data)=>{
           <div class="d-flex mt-3">
             <div class="features">
                 <h5>Features</h5>
-                <ul >
-                    <li>${features[1].feature_name}</li>
-                    <li>${features[2].feature_name}</li>
-                    <li>${features[3].feature_name}</li>
+                <ul id="modal-features" >
+                    
                     
 
                 </ul>
             </div>
             <div  class="integrations">
                 <h5 >Integrations</h5>
-                <ul  id="integrations">
+                <ul  id="modal-integrations">
                     
                     
 
@@ -150,7 +149,15 @@ const showSingleData=(data)=>{
     
 </div>
     `;
-    console.log(integrations);
+    const featuresContainer = document.getElementById('modal-features')
+    for (const key in features) {
+
+        console.log(features[key].feature_name);
+        featuresContainer.innerHTML += `
+         <li>${features[key].feature_name}</li>
+        `
+    }
+    
     const accuracyC= document.getElementById("accuracy")
     if(accuracy.score){
         accuracyC.classList.remove('d-none')
@@ -159,7 +166,7 @@ const showSingleData=(data)=>{
     else{
         accuracyC.classList.add('d-none')
     }
-    const integrationsContainer = document.getElementById("integrations")
+    const integrationsContainer = document.getElementById("modal-integrations")
     if (integrations){
         integrations.forEach(el=>{
             
@@ -212,5 +219,5 @@ toggleSpinner(true);
 
 
 
-loadAllData(6)
+loadAllData(6);
 
