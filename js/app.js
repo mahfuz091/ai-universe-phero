@@ -2,7 +2,7 @@ const loadAllData = async (dataLimit)=>{
     const url = "https://openapi.programming-hero.com/api/ai/tools"
     const res = await fetch(url);
     const data = await res.json();
-    showAllData(data.data.tools, dataLimit)
+    showAllData(data.data.tools, dataLimit )
 
 }
 const showAllData =(data, dataLimit)=>{
@@ -194,7 +194,10 @@ const shortByDate =async()=>{
         return new Date(b.published_in) - new Date(a.published_in);
       });
     //   console.log(shortData)
-      showAllData(shortData, 6)
+    console.log(shortData.length)
+    const seeMore = document.getElementById("see-more")
+    
+    showAllData(shortData)
       
 }
 
