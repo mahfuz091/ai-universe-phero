@@ -194,7 +194,7 @@ const shortByDate =async()=>{
         return new Date(b.published_in) - new Date(a.published_in);
       });
     //   console.log(shortData)
-      showAllData(shortData)
+      showAllData(shortData, 6)
       
 }
 
