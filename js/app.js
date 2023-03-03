@@ -6,8 +6,7 @@ const loadAllData = async (dataLimit)=>{
 
 }
 const showAllData =(data, dataLimit)=>{
-    // data = data.slice(0, 6)
-    console.log(data.length)
+  
     const seeMore = document.getElementById("see-more")
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML ="";
@@ -35,9 +34,6 @@ const showAllData =(data, dataLimit)=>{
                 <h5 class="card-title">Features</h5>
                 <ol id="${id}" class="list-container">
                 
-                
-
-
                 </ol>
 
             </div>
@@ -53,7 +49,7 @@ const showAllData =(data, dataLimit)=>{
 
                 </div>
                 <div>
-                    <button class="border-0 arrow"><i onclick="loadSingleData('${id}')" data-bs-toggle="modal" data-bs-target="#dataModal" class="fa fa-arrow-right"></i></button>
+                    <button onclick="loadSingleData('${id}')" class="border-0 arrow-btn"><i  data-bs-toggle="modal" data-bs-target="#dataModal" class="fa fa-arrow-right"></i></button>
                 </div>
 
             </div>
@@ -68,17 +64,11 @@ const showAllData =(data, dataLimit)=>{
             liContainer.innerHTML+=`
             <li>${item}</li>
             `
-
             
         })
                     
         toggleSpinner(false);
 
-        // console.log(features)
-        // features.forEach(item=>{
-        //     console.log(item)
-        // })
-        
         
     });
     
@@ -111,7 +101,7 @@ const showSingleData=(data)=>{
     modalBody.innerHTML += `
     <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col ">
-      <div class="card modal-feature">
+      <div class="card modal-feature modal-main-card">
         <h5 class="title">${description}</h5>
         <div class="card-body">
           <div class="d-flex gap-2">
@@ -147,8 +137,8 @@ const showSingleData=(data)=>{
       </div>
     </div>
     <div class="col">
-      <div class="card">
-        <img src="${image_link[0]}" class="card-img-top" alt="...">
+      <div class="card modal-main-card">
+        <img src="${image_link[0]}" class="card-img-top modal-img" alt="...">
         <p id="accuracy" class="accuracy d-none"></p>
         <div class="card-body">
           <h5 class="card-title text-center">${input_output_examples?input_output_examples[0].input: "Can you give any example?"}</h5>

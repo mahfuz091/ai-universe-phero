@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap');
 
 * {
     margin: 0;
@@ -40,7 +40,6 @@
 .card-img-top {
     padding: 25px;
     border-radius: 35px !important;
-
     height: 300px !important;
 }
 
@@ -70,8 +69,6 @@
     margin-left: -12px;
 }
 
-
-
 .footer {
 
     display: flex;
@@ -87,10 +84,7 @@
     margin-top: 15px !important;
 }
 
-
-
-
-.arrow {
+.arrow-btn {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -129,15 +123,22 @@
 }
 
 .modal-dialog {
-    --bs-modal-width: 1000px !important;
-
+    --bs-modal-width: 1265px !important;
     padding: 50px !important;
-
     margin: auto;
 }
 
+.modal-main-card {
+    height: 511px;
+}
+
+
 .modal-header {
     border-bottom: none !important;
+}
+
+.modal-content {
+    padding: 80px !important;
 }
 
 .modal-card {
@@ -152,6 +153,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.modal-img {
+    height: 350px !important;
+    margin-bottom: 25px;
 }
 
 .modal-feature {
@@ -228,12 +234,17 @@
     background-color: red;
 }
 
+
+/* Responsive Styles Start */
+
 @media (max-width:576px) {
     .modal-dialog {
         --bs-modal-width: 500px !important;
         margin-top: 215px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 0 !important;
+
     }
 
     .btn-close {
@@ -242,5 +253,17 @@
         right: -10px;
         top: -10px !important;
     }
+
+    .card {
+        height: auto !important;
+    }
+
+
+
+    .modal-content {
+        padding: 0 !important;
+    }
+
+
 
 }
