@@ -21,7 +21,6 @@ const showAllData =(data, dataLimit)=>{
         
     }
 
-    
   
     data.forEach(singleData => {
         const {id, image, features, name, published_in}= singleData
@@ -49,7 +48,7 @@ const showAllData =(data, dataLimit)=>{
 
                 </div>
                 <div>
-                    <button onclick="loadSingleData('${id}')" class="border-0 arrow-btn"><i  data-bs-toggle="modal" data-bs-target="#dataModal" class="fa fa-arrow-right"></i></button>
+                    <button onclick="loadSingleData('${id}')" class="fa fa-arrow-right border-0 arrow-btn" data-bs-toggle="modal" data-bs-target="#dataModal"></button>
                 </div>
 
             </div>
@@ -85,7 +84,7 @@ const showAllDataTogether = () => {
       });
   };
 
-  const loadSingleData =(id)=>{
+const loadSingleData =(id)=>{
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`
     fetch(url)
     .then(res=>res.json())
@@ -106,9 +105,9 @@ const showSingleData=(data)=>{
         <h5 class="title">${description}</h5>
         <div class="card-body">
           <div class="d-flex gap-2">
-            <div class="modal-card basic">${pricing? pricing[0].price : 'Free Of Cost'}<br>
+            <div class="modal-card basic">${pricing? pricing[0].price : 'Free Of Cost/'}<br>
                 ${pricing?pricing[0].plan : "Basic"}</div>
-            <div class="modal-card pro">${pricing?pricing[1].price : 'Free Of Cost'}<br>
+            <div class="modal-card pro">${pricing?pricing[1].price : 'Free Of Cost/'}<br>
             ${pricing?pricing[1].plan : "Pro"}</div>
             <div class="modal-card enterprise">${pricing?pricing[2].price: "Free of Cost/"}<br>
             ${pricing?pricing[2].plan:"Enterprise"}</div>
@@ -152,7 +151,6 @@ const showSingleData=(data)=>{
     const featuresContainer = document.getElementById('modal-features')
     for (const key in features) {
 
-        console.log(features[key].feature_name);
         featuresContainer.innerHTML += `
          <li>${features[key].feature_name}</li>
         `
@@ -213,10 +211,6 @@ const toggleSpinner = isLoading =>{
 }
 
 toggleSpinner(true);
-
-
-
-
 
 
 loadAllData(6);
