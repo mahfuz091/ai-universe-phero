@@ -130,7 +130,8 @@
 
 .modal-dialog {
     --bs-modal-width: 1000px !important;
-    height: 763px !important;
+
+    padding: 50px !important;
 
     margin: auto;
 }
@@ -142,7 +143,7 @@
 .modal-card {
 
     text-align: center;
-    margin-top: 25px;
+    margin-top: 10px;
 
     background: #FFFFFF;
     border-radius: 16px;
@@ -166,6 +167,30 @@
     font-size: 25px;
     color: #111111;
     padding: 30px;
+}
+
+.basic {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #03A30A;
+}
+
+.pro {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    color: #F28927;
+}
+
+.enterprise {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    color: #EB5757;
 }
 
 .features>h5,

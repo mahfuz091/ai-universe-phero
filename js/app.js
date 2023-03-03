@@ -115,11 +115,11 @@ const showSingleData=(data)=>{
         <h5 class="title">${description}</h5>
         <div class="card-body">
           <div class="d-flex gap-2">
-            <div class="modal-card">${pricing? pricing[0].price : 'Free Of Cost'}<br>
+            <div class="modal-card basic">${pricing? pricing[0].price : 'Free Of Cost'}<br>
                 ${pricing?pricing[0].plan : "Basic"}</div>
-            <div class="modal-card">${pricing?pricing[1].price : 'Free Of Cost'}<br>
+            <div class="modal-card pro">${pricing?pricing[1].price : 'Free Of Cost'}<br>
             ${pricing?pricing[1].plan : "Pro"}</div>
-            <div class="modal-card">${pricing?pricing[2].price: "Free of Cost/"}<br>
+            <div class="modal-card enterprise">${pricing?pricing[2].price: "Free of Cost/"}<br>
             ${pricing?pricing[2].plan:"Enterprise"}</div>
 
           </div>
