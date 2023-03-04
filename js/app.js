@@ -98,7 +98,10 @@ const showAllDataTogether = () => {
       .then((data) => {
         //   console.log(data);
         showAllData(data.data.tools);
-      });
+      })
+      .catch((error) => {
+        alert(error.message)
+      })
   };
 
 const loadSingleData =(id)=>{
@@ -106,6 +109,9 @@ const loadSingleData =(id)=>{
     fetch(url)
     .then(res=>res.json())
     .then(data=>showSingleData(data.data))
+    .catch(error=>{
+        alert(error.message)
+    })
 
 }
 const showSingleData=(data)=>{
@@ -202,18 +208,24 @@ const showSingleData=(data)=>{
 }
 const shortByDate =async(dataLimit)=>{
     const url = "https://openapi.programming-hero.com/api/ai/tools"
-    const res = await fetch(url);
-    const data = await res.json();
-    // console.log(data.data.tools)
-    const shortData = data.data.tools;
-    console.log(fetchData)
-    fetchData.sort(function(a,b){
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        // console.log(data.data.tools)
+        const shortData = data.data.tools;
+        // console.log(fetchData)
+        fetchData.sort(function(a,b){
         
         return new Date(b.published_in) - new Date(a.published_in);
-      });
+      })
     
     
-    showAllData(fetchData)
+        showAllData(fetchData)
+    }
+    catch(error){
+        alert(error.message)
+    }
+
       
 }
 
