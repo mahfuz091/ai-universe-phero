@@ -1,3 +1,5 @@
+let fetchData = [];
+
 const loadAllData = async (dataLimit)=>{
     const url = "https://openapi.programming-hero.com/api/ai/tools"
     const res = await fetch(url);
@@ -11,15 +13,24 @@ const showAllData =(data, dataLimit)=>{
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML ="";
 
-    if (dataLimit && data.length>6){
+    if (dataLimit && data.length >6){
+        
         data = data.slice(0, 6)
+        fetchData = data
         seeMore.classList.remove("d-none")
 
     }
     else{
         seeMore.classList.add("d-none")
-        
+        fetchData=data
     }
+    if (fetchData.length>6){
+        seeMore.classList.add("d-none")
+    }
+    else{
+        seeMore.classList.remove("d-none")
+    }
+    
 
   
     data.forEach(singleData => {
@@ -183,21 +194,20 @@ const showSingleData=(data)=>{
 
     
 }
-const shortByDate =async()=>{
+const shortByDate =async(dataLimit)=>{
     const url = "https://openapi.programming-hero.com/api/ai/tools"
     const res = await fetch(url);
     const data = await res.json();
     // console.log(data.data.tools)
     const shortData = data.data.tools;
-    shortData.sort(function(a,b){
+    console.log(fetchData)
+    fetchData.sort(function(a,b){
         
         return new Date(b.published_in) - new Date(a.published_in);
       });
-    //   console.log(shortData)
-    console.log(shortData.length)
-    const seeMore = document.getElementById("see-more")
     
-    showAllData(shortData)
+    
+    showAllData(fetchData)
       
 }
 
