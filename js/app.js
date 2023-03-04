@@ -1,5 +1,6 @@
 let fetchData = [];
 
+
 const loadAllData = async (dataLimit)=>{
     try{
         const url = "https://openapi.programming-hero.com/api/ai/tools"
@@ -14,6 +15,8 @@ const loadAllData = async (dataLimit)=>{
 
 }
 const showAllData =(data, dataLimit)=>{
+
+
   
     const seeMore = document.getElementById("see-more")
     const cardContainer = document.getElementById("card-container");
@@ -23,12 +26,15 @@ const showAllData =(data, dataLimit)=>{
         
         data = data.slice(0, 6)
         fetchData = data
+        
         seeMore.classList.remove("d-none")
 
     }
     else{
         seeMore.classList.add("d-none")
         fetchData=data
+        
+       
     }
     if (fetchData.length>6){
         seeMore.classList.add("d-none")
@@ -179,13 +185,13 @@ const showSingleData=(data)=>{
         `
     }
     
-    const accuracyC= document.getElementById("accuracy")
+    const accuracyContainer = document.getElementById("accuracy")
     if(accuracy.score){
-        accuracyC.classList.remove('d-none')
-        accuracyC.innerText =`${accuracy.score*100} % accuracy`
+        accuracyContainer.classList.remove('d-none')
+        accuracyContainer.innerText =`${accuracy.score*100} % accuracy`
     }
     else{
-        accuracyC.classList.add('d-none')
+        accuracyContainer.classList.add('d-none')
     }
     const integrationsContainer = document.getElementById("modal-integrations")
     if (integrations){
@@ -206,25 +212,12 @@ const showSingleData=(data)=>{
 
     
 }
-const shortByDate =async(dataLimit)=>{
-    const url = "https://openapi.programming-hero.com/api/ai/tools"
-    try{
-        const res = await fetch(url);
-        const data = await res.json();
-        // console.log(data.data.tools)
-        const shortData = data.data.tools;
-        // console.log(fetchData)
-        fetchData.sort(function(a,b){
-        
-        return new Date(b.published_in) - new Date(a.published_in);
-      })
+const shortByDate =()=>{
     
+    fetchData.sort(function(a,b){
+        return new Date(b.published_in) - new Date(a.published_in);})
     
         showAllData(fetchData)
-    }
-    catch(error){
-        alert(error.message)
-    }
 
       
 }
