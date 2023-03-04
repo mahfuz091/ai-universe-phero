@@ -1,10 +1,16 @@
 let fetchData = [];
 
 const loadAllData = async (dataLimit)=>{
-    const url = "https://openapi.programming-hero.com/api/ai/tools"
-    const res = await fetch(url);
-    const data = await res.json();
-    showAllData(data.data.tools, dataLimit )
+    try{
+        const url = "https://openapi.programming-hero.com/api/ai/tools"
+        const res = await fetch(url);
+        const data = await res.json();
+        showAllData(data.data.tools, dataLimit )
+    }
+    catch(error){
+        alert(error.message)
+
+    }
 
 }
 const showAllData =(data, dataLimit)=>{
